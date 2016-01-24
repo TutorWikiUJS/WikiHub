@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>提交老师信息</title>
+  <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://api.geetest.com/get.php"></script>
+  <script type="text/javascript">
+            function change() {
+                var ok = false
+                var name = document.getElementById("name");
+                var detail = document.getElementById("detail");
+                var btn = document.getElementById("click");
+                if (name.value == "" || detail.value == "" || name.value == null || detail.value == null){
+                  btn.disabled = true;
+                  btn.value = "写点啥吧(;´༎ຶД༎ຶ`)"
+                  return;
+                }else{
+                  btn.disabled = false;
+                  btn.value = "好了就戳我(,,・ω・,,)"
+                }
+              }
+        </script>
+</head>
+
+<body>
+  <div class="jumbotron masthead">
+    <div class="container">
+      <h1>导师信息提交页面</h1>
+      <form method="POST" action="/" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>姓名</label>
+          <input type="text" name="name" class="form-control" id="name" oninput="change()"/>
+        </div>
+        <div class="form-group">
+          <label>介绍</label>
+          <textarea name="detail" rows="15" class="form-control" id="detail" oninput="change()"></textarea>
+        </div>
+        <div id="gee"></div>
+
+        <input class="btn btn-default" id="click" disabled="true" value="写完才能点我哦!(๑•́ ₃ •̀๑)" type="button" />
+        <script>
+          window.popup_captcha = new window.Geetest({
+            gt: '2cbd148037b4ccb288c227398edbe5e5',
+            product: 'popup'
+          }).appendTo('#gee').bindOn('#click')
+        </script>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

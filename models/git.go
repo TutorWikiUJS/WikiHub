@@ -12,9 +12,9 @@ import (
 )
 
 const (
-	Token = ""
-	Name  = "xuzhenglun"
-	Repo  = "testrepo"
+	Token = "6fdd62cc432c2c3fc8f65f1a296733dfec5d3f71"
+	Name  = "publicidujs"
+	Repo  = "TutorWiki"
 )
 
 func InitClient() *http.Client {
@@ -38,7 +38,7 @@ func CreateNewFile(name, detail string, img *os.File, tc *http.Client) int {
 
 	message := github.RepositoryContentFileOptions{Message: &commitMessage, Content: []byte(detail)}
 
-	uploadName := name + strconv.Itoa(int(time.Now().Unix())) + ".md"
+	uploadName := "tutors/" + name + strconv.Itoa(int(time.Now().Unix())) + ".md"
 
 	_, r, err := client.Repositories.CreateFile(Name, Repo, uploadName, &message)
 	if err != nil {

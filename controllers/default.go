@@ -12,11 +12,11 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
-	c.TplNames = "upload.html"
+	c.TplName = "upload.html"
 }
 
 func (this *MainController) Post() {
-	this.TplNames = "upload.html"
+	this.TplName = "upload.html"
 	name := this.GetString("name")
 	detail := this.GetString("detail")
 
@@ -24,7 +24,7 @@ func (this *MainController) Post() {
 	validate := this.GetString("geetest_validate")
 	seccode := this.GetString("geetest_seccode")
 
-	log.Println(challenge,validate,seccode)
+	log.Println(challenge, validate, seccode)
 
 	sdk := models.NewTest()
 

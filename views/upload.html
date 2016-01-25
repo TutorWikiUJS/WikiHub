@@ -6,6 +6,7 @@
   <title>提交老师信息</title>
   <link rel="icon" href="static/haoicon.ico" type="image/x-icon">
   <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap-markdown.min.css">
   <script src="http://api.geetest.com/get.php"></script>
   <script type="text/javascript">
     function change() {
@@ -59,11 +60,21 @@
     <form method="POST" action="/" enctype="multipart/form-data" id="form">
       <div class="form-group">
         <label>姓名</label>
-        <input type="text" name="name" class="form-control" id="name" oninput="change()" />
+        <input type="text" name="name" placeholder="隔壁老王" class="form-control" id="name" oninput="change()" />
       </div>
       <div class="form-group">
         <label>介绍</label>
-        <textarea name="detail" rows="15" class="form-control" id="detail" oninput="change()"></textarea>
+        <textarea name="detail" rows="15" placeholder="- 职务：XXX
+- 现今研究课题：测试
+- 福利：每个月都有补助，过年有红包
+- 性格：为人低调，朴素
+- 资源：校外有公司，校内有机房，可以去他那实习
+- 风格：自由发展，平时不怎么露面
+- 爱好： 认真工作
+- 牛逼的学长：小明，小红，小张
+- 实验室技术栈：JAVA/C#、Windows开发/PHP/Golang、Ruby、Python开发/Linux运维狗
+- 其余说明：blablabla
+" data-provide="markdown" class="form-control" id="detail" oninput="change()"></textarea>
       </div>
       <div id="gee"></div>
 
@@ -85,6 +96,9 @@
   </div>
   <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="/static/js/markdown.js"></script>
+  <script src="/static/js/to-markdown.js"></script>
+    <script src="/static/js/bootstrap-markdown.js"></script>
 </body>
 
 </html>

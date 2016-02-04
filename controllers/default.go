@@ -17,8 +17,19 @@ func (c *MainController) Get() {
 
 func (this *MainController) Post() {
 	this.TplName = "upload.html"
-	name := this.GetString("name")
-	detail := this.GetString("detail")
+
+	var form models.Form
+	form.Add("name", this.GetString("name"))
+	form.Add("zhiwei", this.GetString("职位"))
+	form.Add("jishu", this.GetString("技术"))
+	form.Add("fangxiang", this.GetString("方向"))
+	form.Add("fangshi", this.GetString("方式"))
+	form.Add("ziyuan", this.GetString("资源"))
+	form.Add("xinge", this.GetString("性格"))
+	form.Add("aihao", this.GetString("爱好"))
+	form.Add("fuli", this.GetString("福利"))
+	form.Add("xuezhang", this.GetString("学长"))
+	form.Add("detail", this.GetString("detail"))
 
 	challenge := this.GetString("geetest_challenge")
 	validate := this.GetString("geetest_validate")
@@ -36,9 +47,8 @@ func (this *MainController) Post() {
 	if ok {
 		fmt.Fprintf(this.Ctx.ResponseWriter, "Success!")
 		Tc := models.InitClient()
-		models.CreateNewFile(name, detail, nil, Tc)
+		models.CreateNewFile(form, nil, Tc)
 	} else {
 		fmt.Fprintf(this.Ctx.ResponseWriter, "Failed!")
 	}
-
 }

@@ -55,30 +55,93 @@
   </div>
 
   <div class="container">
-    <h1>导师信息提交</h1>
+    <div class="col-sm-offset-1">
+      <h1>导师信息提交</h1>
+    </div>
 
-    <form method="POST" action="/" enctype="multipart/form-data" id="form">
+    <form method="POST" action="/" enctype="multipart/form-data" id="form" class="form-horizontal">
       <div class="form-group">
-        <label>姓名</label>
-        <input type="text" name="name" placeholder="隔壁老王" class="form-control" id="name" oninput="change()" />
+        <label class="col-sm-1 control-label">姓名</label>
+        <div class="col-sm-11">
+          <input type="text" name="name" placeholder="隔壁老王" class="form-control" id="name" oninput="change()" />
+        </div>
       </div>
+
       <div class="form-group">
-        <label>介绍</label>
-        <textarea name="detail" rows="15" placeholder="- 职务：XXX
-- 现今研究课题：测试
-- 福利：每个月都有补助，过年有红包
-- 性格：为人低调，朴素
-- 资源：校外有公司，校内有机房，可以去他那实习
-- 风格：自由发展，平时不怎么露面
-- 爱好： 认真工作
-- 牛逼的学长：小明，小红，小张
-- 实验室技术栈：JAVA/C#、Windows开发/PHP/Golang、Ruby、Python开发/Linux运维狗
-- 其余说明：blablabla
+        <label class="col-sm-1 control-label">职位</label>
+        <div class="col-sm-11">
+          <input type="text" name="职位" placeholder="扫地僧" class="form-control" id="职位" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">实验室的技术栈</label>
+        <div class="col-sm-11">
+          <input type="text" name="技术" placeholder="JAVA/C#、Windows开发/PHP/Golang、Ruby、Python开发/Linux运维狗" class="form-control" id="技术" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">研究方向</label>
+        <div class="col-sm-11">
+          <input type="text" name="方向" placeholder="自动测试/软家架构/需求分析/信息安全" class="form-control" id="技术" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">方式</label>
+        <div class="col-sm-11">
+          <input type="text" name="方式" placeholder="严加管教，每个礼拜都要报告等等/基本放养，学啥全凭兴趣" class="form-control" id="方式" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">掌握资源</label>
+        <div class="col-sm-11">
+          <input type="text" name="资源" placeholder="隔壁有个大公司/基友是马化腾/信息中心是我家" class="form-control" id="资源" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">性格</label>
+        <div class="col-sm-11">
+          <input type="text" name="性格" placeholder="低调内敛有内涵" class="form-control" id="性格" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">爱好</label>
+        <div class="col-sm-11">
+          <input type="text" name="爱好" placeholder="乒乓球/吃货/学术" class="form-control" id="爱好" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">福利</label>
+        <div class="col-sm-11">
+          <input type="text" name="福利" placeholder="每个月都有补助哟，放假包饺子呀" class="form-control" id="福利" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">牛逼学长</label>
+        <div class="col-sm-11">
+          <input type="text" name="学长" placeholder="小明，小红，小张" class="form-control" id="学长" oninput="change()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-1 control-label">其他</label>
+        <div class="col-sm-11">
+          <textarea name="detail" rows="10" placeholder="（支持Markdown语法编辑）
+
+- 其余说明：咱们老师好啊，真的好！
 " data-provide="markdown" class="form-control" id="detail" oninput="change()"></textarea>
+        </div>
       </div>
       <div id="gee"></div>
 
-      <input type="submit" class="btn btn-default" id="click" disabled="true" value="写完才能点我哦!(๑•́ ₃ •̀๑)" />
+      <input type="submit" class="btn btn-default col-sm-offset-1" id="click" disabled="true" value="写完才能点我哦!(๑•́ ₃ •̀๑)" />
       <script>
         window.popup_captcha = new window.Geetest({
           gt: '2cbd148037b4ccb288c227398edbe5e5',
@@ -98,7 +161,7 @@
   <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="/static/js/markdown.js"></script>
   <script src="/static/js/to-markdown.js"></script>
-    <script src="/static/js/bootstrap-markdown.js"></script>
+  <script src="/static/js/bootstrap-markdown.js"></script>
 </body>
 
 </html>

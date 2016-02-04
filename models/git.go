@@ -2,6 +2,7 @@ package models
 
 import (
 	//"encoding/json"
+	"fmt"
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 	"log"
@@ -17,6 +18,11 @@ const (
 	Repo  = "TutorWiki"
 )
 
+type Form struct {
+	info  map[string]string
+	index []string
+}
+
 func InitClient() *http.Client {
 	ts := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: Token},
@@ -25,18 +31,25 @@ func InitClient() *http.Client {
 	return tc
 }
 
-func CreateNewFile(name, detail string, img *os.File, tc *http.Client) int {
-	log.Println("name:"+name, "detail:"+detail)
-	client := github.NewClient(tc)
+func CreateNewFile(form Form, img *os.File, tc *http.Client) int {
 
-	if name == "" || detail == "" {
-		log.Println("Invaild Input")
-		return -2
+	name := form.info["name"]
+	desc := fmt.Sprintf("#%s\n---\n\n", form.info["name"])
+
+	for _, v := range form.index {
+		if form.info[v] != "" && v != "detail" {
+			desc = desc + fmt.Sprintf("- %s\n", form.info[v])
+		}
 	}
+
+	desc = desc + form.info["detail"]
+
+	log.Println("name:"+name, "detail:"+desc)
+	client := github.NewClient(tc)
 
 	commitMessage := "Add " + name
 
-	message := github.RepositoryContentFileOptions{Message: &commitMessage, Content: []byte(detail)}
+	message := github.RepositoryContentFileOptions{Message: &commitMessage, Content: []byte(desc)}
 
 	uploadName := "tutors/" + name + strconv.Itoa(int(time.Now().Unix())) + ".md"
 
@@ -48,4 +61,12 @@ func CreateNewFile(name, detail string, img *os.File, tc *http.Client) int {
 		log.Println(r)
 		return 0
 	}
+}
+
+func (this *Form) Add(key, value string) {
+	if this.info == nil {
+		this.info = make(map[string]string)
+	}
+	this.index = append(this.index, key)
+	this.info[key] = value
 }

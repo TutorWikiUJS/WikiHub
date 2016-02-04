@@ -38,11 +38,11 @@ func CreateNewFile(form Form, img *os.File, tc *http.Client) int {
 
 	for _, v := range form.index {
 		if form.info[v] != "" && v != "detail" {
-			desc = desc + fmt.Sprintf("- %s\n", form.info[v])
+			desc = desc + fmt.Sprintf("- %s:%s\n", v, form.info[v])
 		}
 	}
 
-	desc = desc + form.info["detail"]
+	desc = desc + "---\n- 其他:" + form.info["detail"]
 
 	log.Println("name:"+name, "detail:"+desc)
 	client := github.NewClient(tc)

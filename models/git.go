@@ -37,7 +37,7 @@ func CreateNewFile(form Form, img *os.File, tc *http.Client) (string, int) {
 	desc := fmt.Sprintf("#%s\n---\n\n", form.info["name"])
 
 	for _, v := range form.index {
-		if form.info[v] != "" && v != "detail" {
+		if form.info[v] != "" && v != "detail" && v != "name" {
 			desc = desc + fmt.Sprintf("- %s:%s\n", v, form.info[v])
 		}
 	}

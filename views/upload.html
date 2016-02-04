@@ -14,9 +14,23 @@
       var name = document.getElementById("name");
       var detail = document.getElementById("detail");
       var btn = document.getElementById("click");
-      if (name.value == "" || detail.value == "" || name.value == null || detail.value == null) {
+      var zw = document.getElementById("职位");
+      var js = document.getElementById("技术");
+      var fx = document.getElementById("方向");
+      var fs = document.getElementById("方式");
+      var zy = document.getElementById("资源");
+      var xg = document.getElementById("性格");
+      var ah = document.getElementById("爱好");
+      var fl = document.getElementById("福利");
+      var xz = document.getElementById("学长");
+      var len = detail.value.length + zw.value.length + js.value.length + fx.value.length + fs.value.length + fs.value.length + zy.value.length + xg.value.length + ah.value.length + fl.value.length + xz.value.length;
+      if (name.value.length == 0){
+        btn.value = "名字还没写呢亲(;´༎ຶД༎ຶ`)"
+        return;
+      }
+      if (name.value == "" ||  len< 100) {
         btn.disabled = true;
-        btn.value = "写点啥吧(;´༎ຶД༎ຶ`)"
+        btn.value = "写点啥吧(;´༎ຶД༎ຶ`) (需要总计100字以上哦，当前"+len+"字啦)"
         return;
       } else {
         btn.disabled = false;
@@ -84,7 +98,7 @@
       <div class="form-group">
         <label class="col-sm-1 control-label">研究方向</label>
         <div class="col-sm-11">
-          <input type="text" name="方向" placeholder="自动测试/软家架构/需求分析/信息安全" class="form-control" id="技术" oninput="change()" />
+          <input type="text" name="方向" placeholder="自动测试/软家架构/需求分析/信息安全" class="form-control" id="方向" oninput="change()" />
         </div>
       </div>
 

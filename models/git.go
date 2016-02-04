@@ -42,7 +42,7 @@ func CreateNewFile(form Form, img *os.File, tc *http.Client) int {
 		}
 	}
 
-	desc = desc + "---\n- 其他:" + form.info["detail"]
+	desc = desc + "\n---\n- 其他:" + form.info["detail"]
 
 	log.Println("name:"+name, "detail:"+desc)
 	client := github.NewClient(tc)

@@ -45,9 +45,13 @@ func (this *MainController) Post() {
 	}
 
 	if ok {
-		fmt.Fprintf(this.Ctx.ResponseWriter, "Success!")
 		Tc := models.InitClient()
-		models.CreateNewFile(form, nil, Tc)
+		filename, err := models.CreateNewFile(form, nil, Tc)
+		if err != 0 {
+			fmt.Fprintf(this.Ctx.ResponseWriter, "Github Api failed")
+
+		}
+		this.Ctx.Redirect(301, "https://github.com/publicidujs/TutorWiki/blob/master/"+filename)
 	} else {
 		fmt.Fprintf(this.Ctx.ResponseWriter, "Failed!")
 	}

@@ -31,7 +31,7 @@ func InitClient() *http.Client {
 	return tc
 }
 
-func CreateNewFile(form Form, img *os.File, tc *http.Client) int {
+func CreateNewFile(form Form, img *os.File, tc *http.Client) (string, int) {
 
 	name := form.info["name"]
 	desc := fmt.Sprintf("#%s\n---\n\n", form.info["name"])
@@ -56,10 +56,10 @@ func CreateNewFile(form Form, img *os.File, tc *http.Client) int {
 	_, r, err := client.Repositories.CreateFile(Name, Repo, uploadName, &message)
 	if err != nil {
 		log.Println(err)
-		return -1
+		return "", -1
 	} else {
 		log.Println(r)
-		return 0
+		return uploadName, 0
 	}
 }
 
